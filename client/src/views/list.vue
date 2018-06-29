@@ -52,7 +52,13 @@ export default {
   },
   props: ['item'],
   created() {
-    console.log('ladsfadsfadsfasdfa', this.lalala)
+    if (localStorage.hasOwnProperty('token') === true) {
+      this.$router.push('/home')
+      // this.getdata()
+      this.deleteTodo(id)
+      this.editTodo(id)
+    }
+    this.$router.push('/')
   },
   methods: {
     toggleedit() {

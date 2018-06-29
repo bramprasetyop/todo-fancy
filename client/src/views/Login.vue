@@ -3,26 +3,24 @@
   <div class="container">
     <Navbar/>
     <div class="row">
-      <div class="col-md-4 col-sm-4 col-xs-12"></div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="col s6">
         <form class="loginform">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
+            <label for="exampleInputEmail1"><b>Email</b></label>
             <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1"><b>Password</b> </label>
             <input type="password" v-model="password" class="form-control" id="exampleInputPassword1">
           </div>
           <div class="row">
-            <div class="col s2">
+            <div class="col s3">
               <button type="button" @click="login" class="btn btn-danger btn-block">Login</button>
             </div>
-            <div class="col s4">
+            <div class="col s8">
               <button type="button" @click="login" class="btn btn-danger btn-block">Login with Facebook</button>
             </div>
           </div>
-
         </form>
       </div>
     </div>
@@ -46,6 +44,11 @@ export default {
       password: ''
     }
   },
+  created: function() {
+    if (localStorage.hasOwnProperty('token') === true) {
+      this.$router.push('/home')
+    }
+  },
   methods: {
     login() {
       let account = {
@@ -54,9 +57,9 @@ export default {
       }
 
       axios
-        .post('http://localhost:3000/signup', account)
+        .post('http://localhost:3000/signin', account)
         .then(response => {
-          // console.log(response.data.token);
+          // console.log(response);
           localStorage.setItem('token', response.data.token)
           this.$router.push('/home')
         })

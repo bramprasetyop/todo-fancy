@@ -5,42 +5,40 @@
     <Navbar/>
     <div class="row">
 
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" v-model="todo" class="materialize-textarea"></textarea>
+              <label for="textarea1">Add new Todo</label>
 
-        
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea id="textarea1" v-model="todo" class="materialize-textarea"></textarea>
-                <label for="textarea1">Add new Todo</label>
-
-                <button type="button" @click="postTodo" class="btn btn-danger btn-block">Add</button>
-              </div>
+              <button type="button" @click="postTodo" class="btn btn-danger btn-block">Add</button>
             </div>
-          </form>
-        </div>
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>
-                <h5>Todo List</h5>
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr>
-
-              <List v-for="(item) in result" :key="item._id" :item="item" />
-
-            </tr>
-          </tbody>
-        </table>
-
+          </div>
+        </form>
       </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <h5>Todo List</h5>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <List v-for="(item) in result" :key="item._id" :item="item" />
+
+          </tr>
+        </tbody>
+      </table>
+
     </div>
+  </div>
 
 </template>
 
@@ -70,12 +68,13 @@ export default {
       let addTodo = {
         content: this.todo
       }
-      console.log(addTodo)
+      // console.log(addTodo)
 
       axios
-        .post('http://localhost:3000/content', addTodo)
+        .post('http://localhost:3000/content', addTodo, {
+          headers: { authorization: localStorage.getItem('token') }
+        })
         .then(response => {
-
           this.result.push(response.data.todo)
           this.result.reverse()
 

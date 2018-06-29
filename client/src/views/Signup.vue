@@ -6,51 +6,36 @@
       <div class="col s6">
         <form class="loginform">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" v-model="emaillogin" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" v-model="passwordlogin" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="row">
-            <div class="col s3">
-              <button type="button" @click="login" class="btn btn-danger btn-block">Login</button>
-            </div>
-            <div class="col s8">
-              <button type="button" @click="login" class="btn btn-danger btn-block">Login with Facebook</button>
-            </div>
-          </div>
-
-        </form>
-
-      </div>
-      <div class="col s6">
-        <form class="loginform">
-
-          <div class="form-group">
-            <label for="fullname">Fullname</label>
+            <label for="fullname"><b>Fullname</b></label>
             <input type="text" v-model="fullname" class="form-control" id="fullname" aria-describedby="fullname">
           </div>
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username"><b>Username</b></label>
             <input type="text" v-model="username" class="form-control" id="username" aria-describedby="username">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
+            <label for="exampleInputEmail1"><b>Email</b></label>
             <input type="email" v-model="emailsignup" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1"><b>Password</b></label>
             <input type="password" v-model="passwordsignup" class="form-control" id="exampleInputPassword1">
           </div>
           <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text"  v-model="phone" class="form-control" id="phone" aria-describedby="phone">
+            <label for="phone"><b>Phone</b></label>
+            <input type="text" v-model="phone" class="form-control" id="phone" aria-describedby="phone">
           </div>
           <div class="row">
             <div class="col s3">
-              <button type="button" @click= "signup" class="btn btn-danger btn-block">Signup</button>
+              <button type="button" @click="signup" class="btn btn-danger btn-block">Signup</button>
+            </div>
+            <div class="col s1">
+              <h6>OR</h6>
+            </div>
+            <div class="col s3">
+              <a href="/login">
+                <button type="button" class="btn btn-danger btn-block">Login</button>
+              </a>
             </div>
           </div>
 
@@ -67,14 +52,14 @@ import Navbar from '../components/navbar'
 // import router from '../router.js'
 
 export default {
-  name: 'login',
+  name: 'register',
   components: {
     Navbar
   },
   data() {
     return {
-      emaillogin: '',
-      passwordlogin: '',
+      // emaillogin: '',
+      // passwordlogin: '',
       fullname: '',
       username: '',
       phone: '',
@@ -83,23 +68,23 @@ export default {
     }
   },
   methods: {
-    login() {
-      let account = {
-        email: this.emaillogin,
-        password: this.passwordlogin
-      }
+    // login() {
+    //   let account = {
+    //     email: this.emaillogin,
+    //     password: this.passwordlogin
+    //   }
 
-      axios
-        .post('http://localhost:3000/signin', account)
-        .then(response => {
-          // console.log(response.data.token);
-          localStorage.setItem('token', response.data.token)
-          this.$router.push('/home')
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
+    //   axios
+    //     .post('http://localhost:3000/signin', account)
+    //     .then(response => {
+    //       // console.log(response.data.token);
+    //       localStorage.setItem('token', response.data.token)
+    //       this.$router.push('/home')
+    //     })
+    //     .catch(err => {
+    //       console.log(err)
+    //     })
+    // },
     signup() {
       let account = {
         fullName: this.fullName,
