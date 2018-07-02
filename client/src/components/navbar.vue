@@ -1,7 +1,7 @@
 <template>
-  <nav>
-    <div class="nav-wrapper">
-      <a style="font-size: 45px" href="#!" class="brand-logo">
+  <nav id="inidia" >
+    <div class="nav">
+      <a style="font-size: 45px"  class="brand-logo">
         <i id="material" class="material-icons" style="font-size: 30px">border_color</i>
         <b>Todo</b>
       </a>
@@ -22,8 +22,14 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.clear()
-      this.$router.push('/')
+      if (localStorage.hasOwnProperty('token') === true) {
+        swal({
+          text: 'Logout Success',
+          icon: 'success'
+        })
+        localStorage.clear()
+        this.$router.push('/')
+      }
     }
   }
 }
@@ -36,6 +42,10 @@ h2 {
 
 #material {
   margin-left: 20px;
+}
+
+#inidia{
+  background-color: rgb(8, 8, 8);
 }
 </style>
 

@@ -1,3 +1,5 @@
-body{
-    background-color: rgb(184, 243, 223);
-  }
+body {
+  /* background-color: rgb(184, 243, 223); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://cdn-images-1.medium.com/max/2000/1*o-9xgkkyBgkhnBVN_Wxs6Q.png);
+  opacity: 0.9;
+}

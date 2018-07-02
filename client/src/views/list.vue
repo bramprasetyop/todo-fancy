@@ -1,19 +1,19 @@
 <template>
   <div v-if="!isdeleted" class="row">
     <div class="col s8">
-      <td v-if="!editmode">
-        <h6>{{updatetodo}}</h6>
+      <td id="lah" v-if="!editmode">
+        <h6 id="yadah" >{{updatetodo}}</h6>
       </td>
       <td v-else class="col s6">
-        <input v-model="updatetodo">
+        <input id="yadah" v-model="updatetodo">
         <div class="row">
           <div class="col s3">
-            <button @click="editTodo(item)" class="btn-floating btn-small waves-effect magenta waves-light">
+            <button id="inidah" @click="editTodo(item)" class="btn-floating btn-small waves-effect magenta waves-light">
               <i class="small material-icons">save</i>
             </button>
           </div>
           <div class="col s3">
-            <button @click="toggleedit()" class="btn-floating btn-small waves-effect magenta waves-light">
+            <button id="inidah" @click="toggleedit()" class="btn-floating btn-small waves-effect magenta waves-light">
               <i class="small material-icons">clear</i>
             </button>
           </div>
@@ -23,12 +23,12 @@
     </div>
     <div class="col s4">
       <td>
-        <button @click="deleteTodo(item._id)" class="btn-floating btn-small waves-effect magenta waves-light">
+        <button id="inidah" @click="deleteTodo(item._id)" class="btn-floating btn-small waves-effect magenta waves-light">
           <i class="small material-icons">clear</i>
         </button>
       </td>
       <td>
-        <button @click="toggleedit()" class="btn-floating btn-small waves-effect magenta waves-light">
+        <button id="inidah" @click="toggleedit()" class="btn-floating btn-small waves-effect magenta waves-light">
           <i class="small material-icons">create</i>
         </button>
       </td>
@@ -65,23 +65,33 @@ export default {
       this.editmode = !this.editmode
     },
     deleteTodo(id) {
+      swal({
+        title: 'Are you sure?',
+        text:
+          'Once deleted, you will not be able to recover this Todo!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          swal('Poof! Your Todo has been deleted!', {
+            icon: 'success'
+          })
+          axios
+            .delete(`http://localhost:3000/content/delete/${id}`, {
+              headers: {
+                authorization: token
+              }
+            })
+            .then(response => {
+              this.isdeleted = true
+            })
+        } else {
+          swal('Your Todo is safe!')
+        }
+      })
+
       let token = localStorage.getItem('token')
-
-      axios
-        .delete(`http://localhost:3000/content/delete/${id}`, {
-          headers: {
-            authorization: token
-          }
-        })
-        .then(response => {
-          this.isdeleted = true
-          // location.reload()
-
-          // this.getdata()
-          // console.log('========',response);
-
-          // this.$router.push('/home')
-        })
     },
     editTodo(item) {
       let token = localStorage.getItem('token')
@@ -133,4 +143,19 @@ export default {
     }
   }
 }
+
+
 </script>
+
+<style>
+#inidah{
+  background-color: rgb(172, 24, 24);
+}
+
+#yadah{
+  color: azure;
+}
+
+
+</style>
+

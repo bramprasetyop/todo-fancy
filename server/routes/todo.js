@@ -6,10 +6,11 @@ const {
   deleteTodo,
   editTodo,getOnetodo
 } = require('../controller/todoController')
+var { signUpVal } = require("../helpers/signupValidation");
 
 /* todo listing. */
 router
-  .post('/content', createTodo)
+  .post('/content',signUpVal, createTodo)
   .get('/content/show',getOnetodo)
   .get('/content/all', getAllTodo)
   //   .get("/customers/:id", getOneCustomers)
