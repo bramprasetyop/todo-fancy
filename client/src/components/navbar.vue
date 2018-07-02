@@ -24,7 +24,6 @@ export default {
     logout() {
       localStorage.clear()
       this.$router.push('/')
-      this.$router.push('/login')
     }
   }
 }

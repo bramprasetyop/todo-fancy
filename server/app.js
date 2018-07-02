@@ -11,7 +11,16 @@ var cors = require('cors')
 //===================== mongoose =========
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017");
+const mongoUser = process.env.MONGO_USER
+const mongoPass = process.env.MONGO_PASS
+
+// mongoose.connect("mongodb://localhost:27017");
+mongoose.connect(`mongodb://${mongoUser}:${mongoPass}@ds121871.mlab.com:21871/todo-fancy-banget`)
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('connected to db')
+});
 
 //===================== mongoose =========
 

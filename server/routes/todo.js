@@ -4,12 +4,13 @@ const {
   createTodo,
   getAllTodo,
   deleteTodo,
-  editTodo
+  editTodo,getOnetodo
 } = require('../controller/todoController')
 
 /* todo listing. */
 router
   .post('/content', createTodo)
+  .get('/content/show',getOnetodo)
   .get('/content/all', getAllTodo)
   //   .get("/customers/:id", getOneCustomers)
   .put('/content/edit/:id', editTodo)

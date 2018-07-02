@@ -75,7 +75,7 @@ function loginCustomer(req, res) {
       let compare = bcrypt.compareSync(pass, customers.password);
       if (compare) {
         jwt.sign(
-          { userName: customers.userName },
+          { userId: customers._id },
           process.env.SECRET,
           (err, token) => {
             res.status(200).json({ message: "login successfully", token });

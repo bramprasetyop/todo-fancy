@@ -61,7 +61,15 @@ export default {
     }
   },
   created: function() {
-    this.getdata()
+    if (localStorage.hasOwnProperty('token') === true) {
+      this.getdata()
+      this.$router.push('/home')
+    }
+    else{
+      this.$router.push('/')
+    }
+   
+    
   },
   methods: {
     postTodo() {
@@ -72,13 +80,11 @@ export default {
 
       axios
         .post('http://localhost:3000/content', addTodo, {
-          headers: { authorization: localStorage.getItem('token') }
+          headers: { token: localStorage.getItem('token') }
         })
         .then(response => {
           this.result.push(response.data.todo)
           this.result.reverse()
-
-          // this.$router.push('/home')
 
           this.todo = ''
         })
@@ -87,15 +93,14 @@ export default {
         })
     },
     getdata() {
-      // console.log('kepanggil')
       axios
-        .get('http://localhost:3000/content/all')
+        .get('http://localhost:3000/content/show', {
+          headers: { token: localStorage.getItem('token') }
+        })
         .then(response => {
-          // console.log(response.data.todos);
-
-          this.result = response.data.todos.reverse()
-
-          // this.$(router).push("/home");
+          // console.log(response.data.dataTodos);
+          
+          this.result = response.data.dataTodos
         })
         .catch(err => {
           console.log(err)
