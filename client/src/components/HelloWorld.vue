@@ -59,6 +59,7 @@
 
 <script>
 import axios from 'axios'
+
 import Navbar from '../components/navbar'
 // import router from '../router.js'
 
@@ -125,8 +126,6 @@ export default {
 #inidah{
   background-color: rgb(172, 24, 24);
 }
-
-
 </style>
 
 

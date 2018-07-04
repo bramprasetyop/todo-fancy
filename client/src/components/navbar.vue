@@ -46,6 +46,7 @@ h2 {
 
 #inidia{
   background-color: rgb(8, 8, 8);
+  
 }
 </style>
 
