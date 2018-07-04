@@ -78,7 +78,7 @@ export default {
             icon: 'success'
           })
           axios
-            .delete(`http://localhost:3000/content/delete/${id}`, {
+            .delete(`https://api-todo.bramaprasetyo.co/content/delete/${id}`, {
               headers: {
                 authorization: token
               }
@@ -100,46 +100,14 @@ export default {
       }
 
       axios
-        .put(`http://localhost:3000/content/edit/${item._id}`, body, {
+        .put(`https://api-todo.bramaprasetyo.co/content/edit/${item._id}`, body, {
           headers: {
             authorization: token
           }
         })
         .then(response => {
           this.editmode = false
-          // location.reload()
-
-          // console.log('========', response)
-          // this.$router.push('/home')
         })
-
-      // // let body = item.content
-
-      // const self = this
-
-      // async function asyncFun() {
-      //   const { value: text } = await swal({
-      //     input: 'textarea',
-      //     inputPlaceholder: 'Edit your todo here',
-      //     showCancelButton: true,
-      //     content: item.content
-      //   })
-
-      //   axios
-      //     .put(`http://localhost:3000/content/edit/${item._id}`, body, {
-      //       headers: {
-      //         authorization: token
-      //       }
-      //     })
-      //     .then(response => {
-      //       self.getdata()
-
-      //       // console.log('========', response.data.content)
-      //       // this.$router.push('/home')
-      //     })
-      // }
-
-      // asyncFun()
     }
   }
 }

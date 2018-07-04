@@ -22,7 +22,7 @@
                 <button id="inidah" type="button" @click="login" class="btn btn-danger btn-block">Login</button>
               </div>
               <div class="col s8">
-                <button id="inidah" type="button" @click="login" class="btn btn-danger btn-block">Login with Facebook</button>
+                <button id="inida" type="button" @click="login" class="btn btn-danger btn-block">Login with Facebook</button>
               </div>
             </div>
           </form>
@@ -61,7 +61,7 @@ export default {
         password: this.password
       }
       axios
-        .post('http://localhost:3000/signin', account)
+        .post('https://api-todo.bramaprasetyo.co/signin', account)
         .then(response => {
           localStorage.setItem('token', response.data.token)
           this.$router.push('/home')
@@ -94,6 +94,9 @@ export default {
   box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
 }
 #inidah{
+  background-color: rgb(172, 24, 24);
+}
+#inida{
   background-color: rgb(172, 24, 24);
 }
 </style>

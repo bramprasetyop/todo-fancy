@@ -37,14 +37,17 @@
             </div>
             <div class="row">
               <div class="col s3">
-                <button id="inidah" type="button" @click="signup" class="btn btn-danger btn-block">Signup</button>
+                <button id="inida" type="button" @click="signup" class="btn btn-danger btn-block">Signup</button>
               </div>
               <div class="col s1">
                 <h6>OR</h6>
               </div>
               <div class="col s3">
-                <a href="/login">
-                  <button id="inidah" type="button" class="btn btn-danger btn-block">Login</button>
+                <a>
+                  <button @click="kelogin()" id="inidah" type="button" class="btn btn-danger btn-block">Login
+
+                  </button>
+
                 </a>
               </div>
             </div>
@@ -79,6 +82,9 @@ export default {
     }
   },
   methods: {
+    kelogin() {
+      this.$router.push('/login')
+    },
     signup() {
       let account = {
         fullName: this.fullName,
@@ -89,7 +95,7 @@ export default {
       }
 
       axios
-        .post('http://localhost:3000/signup', account)
+        .post('https://api-todo.bramaprasetyo.co/signup', account)
         .then(response => {
           // console.log(response.data.token);
           this.$router.push('/login')
@@ -122,11 +128,12 @@ export default {
   box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
 }
 
-#inidah{
+#inidah {
   background-color: rgb(172, 24, 24);
 }
-
-
+#inida {
+  background-color: rgb(172, 24, 24);
+}
 </style>
 
 

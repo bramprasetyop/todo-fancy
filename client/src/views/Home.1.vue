@@ -77,7 +77,7 @@ export default {
       // console.log(addTodo)
 
       axios
-        .post('http://localhost:3000/content', addTodo, {
+        .post('https://api-todo.bramaprasetyo.co/content', addTodo, {
           headers: { token: localStorage.getItem('token') }
         })
         .then(response => {
@@ -98,7 +98,7 @@ export default {
     },
     getdata() {
       axios
-        .get('http://localhost:3000/content/show', {
+        .get('https://api-todo.bramaprasetyo.co/content/show', {
           headers: { token: localStorage.getItem('token') }
         })
         .then(response => {
