@@ -1,24 +1,36 @@
 <template>
-  <nav id="inidia" >
-    <div class="nav">
-      <a style="font-size: 45px"  class="brand-logo">
-        <i id="material" class="material-icons" style="font-size: 30px">border_color</i>
-        <b>Todo</b>
-      </a>
-      <ul class="right hide-on-med-and-down">
-        <li>
-          <a @click="logout">
-            <i class="large material-icons" style="font-size: 40px">forward</i>
-          </a>
-        </li>
-      </ul>
+  <div id="rownavbar" class="row ">
+    <div class="col s12 m6 l12">
+      <div id="mak" class="col s8 m6 ">
+        <a style="font-size: 45px" class="brand-logo">
+          <i id="material" class="material-icons" style="font-size: 30px">border_color</i>
+          <b>Todo</b>
+        </a>
+      </div>
+
+      <div v-if="logoutGan" id="mak" class="col s4 m6 ">
+        <button id="yo" @click="logout">
+          <i id="buton" class="large material-icons" style="font-size: 40px">forward</i>
+        </button>
+      </div>
     </div>
-  </nav>
+
+  </div>
+
 </template>
 <script>
 export default {
   data() {
-    return {}
+    return {
+      logoutGan: false
+    }
+  },
+  created() {
+    if (localStorage.hasOwnProperty('token')) {
+      this.logoutGan = true
+    } else {
+      this.logoutGan = false
+    }
   },
   methods: {
     logout() {
@@ -34,21 +46,7 @@ export default {
   }
 }
 </script>
-<style>
-h2 {
-  margin-left: 20px;
-  color: azure;
-}
 
-#material {
-  margin-left: 20px;
-}
-
-#inidia{
-  background-color: rgb(8, 8, 8);
-  
-}
-</style>
 
 
 

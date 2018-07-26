@@ -110,23 +110,7 @@ export default {
 }
 </script>
 
-<style>
-.loginform {
-  background-color: azure;
-  color: rgb(241, 45, 78);
-  border-radius: 5px;
-  border: 1px solid rgb(253, 252, 252);
-  padding: 50px 50px;
-  margin-top: 18vh;
-  -webkit-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-  box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-}
 
-#inidah{
-  background-color: rgb(172, 24, 24);
-}
-</style>
 
 
 

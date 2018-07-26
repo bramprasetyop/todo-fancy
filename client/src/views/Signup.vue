@@ -3,7 +3,7 @@
     <Navbar/>
     <div class="container">
       <div class="row">
-        <div class="col s6">
+        <div class="col s12 m6 l6">
           <form class="loginform">
             <div class="form-group">
               <label for="fullname">
@@ -35,20 +35,24 @@
               </label>
               <input type="text" v-model="phone" class="form-control" id="phone" aria-describedby="phone">
             </div>
-            <div class="row">
-              <div class="col s3">
+            <div id="iyaiya" class="row">
+              <div id="iyaiyaa" class="col s4 m3 l3">
                 <button id="inida" type="button" @click="signup" class="btn btn-danger btn-block">Signup</button>
               </div>
-              <div class="col s1">
-                <h6>OR</h6>
+
+              <div id="iyaiyaa" class="col s4 m5 l2">
+
+                <h6 style="text-align:center"> OR</h6>
+
               </div>
-              <div class="col s3">
-                <a>
-                  <button @click="kelogin()" id="inidah" type="button" class="btn btn-danger btn-block">Login
 
-                  </button>
+              <div id="iyaiyaa" class="col s4 m3 l3">
 
-                </a>
+                <button id="inidah" type="button" class="btn btn-danger btn-block">
+                  <router-link to="/login">Login</router-link>
+
+                </button>
+
               </div>
             </div>
 
@@ -87,7 +91,7 @@ export default {
     },
     signup() {
       let account = {
-        fullName: this.fullName,
+        fullName: this.fullname,
         userName: this.username,
         phone: this.phone,
         email: this.emailsignup,
@@ -95,7 +99,7 @@ export default {
       }
 
       axios
-        .post('https://api-todo.bramaprasetyo.co/signup', account)
+        .post('http://localhost:3000/signup', account)
         .then(response => {
           // console.log(response.data.token);
           this.$router.push('/login')
@@ -115,26 +119,7 @@ export default {
 }
 </script>
 
-<style>
-.loginform {
-  background-color: azure;
-  color: rgb(241, 45, 78);
-  border-radius: 5px;
-  border: 1px solid rgb(253, 252, 252);
-  padding: 50px 50px;
-  margin-top: 18vh;
-  -webkit-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-  box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-}
 
-#inidah {
-  background-color: rgb(172, 24, 24);
-}
-#inida {
-  background-color: rgb(172, 24, 24);
-}
-</style>
 
 
 

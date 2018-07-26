@@ -8,10 +8,13 @@ function createTodo(req, res) {
 
   let obj = {
     content: req.body.content,
+    date:req.body.date,
     userId : decoded.userId
   }
 
   Todo.create(obj)
+  // console.log(obj)
+  
     .then(todo => {
       res.status(200).json({
         message: 'add todo success',
@@ -58,7 +61,8 @@ function deleteTodo(req, res) {
 function editTodo(req, res) {
   let id = req.params.id
   let obj = {
-    content: req.body.content
+    content: req.body.content,
+    date:req.body.date
   }
 
   Todo.findByIdAndUpdate(id, obj)
