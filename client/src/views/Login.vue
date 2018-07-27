@@ -1,7 +1,7 @@
     <template>
-  <div>
+  <div >
     <Navbar/>
-    <div class="container">
+    <div id="busetbang" class="container">
       <div class="row">
         <div class="col s12 m6 l6">
           <form class="loginform">
@@ -26,6 +26,11 @@
                 <a @click="loginFb()" class="fb btn">
                   <i class="fa fa-facebook fa-fw"></i> Login with Facebook
                 </a>
+              </div>
+              <div class="col s12 m12 l12">
+                <router-link to="/">
+                <a > <h6 style="color:blue">Register Here!</h6></a>
+                </router-link>
               </div>
             </div>
 
@@ -139,6 +144,11 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
+
 
 
 

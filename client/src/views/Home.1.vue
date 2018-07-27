@@ -1,15 +1,18 @@
     <template>
   <div>
     <Navbar/>
+    <div id="bah" class="col s4 left">
+      <div class="col s12 m12 l12">
+        <h6 style="color:white">Welcome {{customers}} !</h6>
+      </div>
+      
+    </div>
     <div class="container">
       <div class="row">
 
         <div class="row">
           <div class="col s12 center">
             <div id="bah" class="row">
-              <div id="bah" class="col s4 left">
-                <h6 style="color:white">Welcome {{customers}} !</h6>
-              </div>
 
               <!-- ============= tambahan weather disini ========== -->
               <div id="bah" class="col s8 right">
@@ -21,8 +24,8 @@
                 <!-- ============= tambahan weather disini ========== -->
 
               </div>
-              
-              <div  class="row">
+
+              <div class="row">
 
                 <div id="yakeles" class="input-field col s6 m6 l6 center">
                   <textarea id="listnya" v-model="todo" class="materialize-textarea"></textarea>
@@ -31,10 +34,10 @@
                   <button id="inidah" type="button" @click="postTodo" class="btn btn-danger btn-block">Add</button>
                 </div>
 
-                <div  id="nihgan" class="col s6 m6 l6 right">
-                  <div  class="col s3 m3 l3">
+                <div id="nihgan" class="col s6 m6 l6 right">
+                  <div class="col s3 m3 l3">
                     <label for="textarea1">Due date</label>
-                    <DatePicker type="date" format="DD-MM-YYYY" v-model ="date" lang="en" :not-before="new Date()"></DatePicker>
+                    <DatePicker type="date" format="DD-MM-YYYY" v-model="date" lang="en" :not-before="new Date()"></DatePicker>
                   </div>
 
                 </div>
@@ -94,7 +97,7 @@ export default {
       weatherAgain: '',
       customers: '',
       date: '',
-      currentDate:''
+      currentDate: ''
     }
   },
   created: function() {
@@ -109,11 +112,10 @@ export default {
     }
   },
   methods: {
-
     postTodo() {
       let addTodo = {
         content: this.todo,
-        date:this.date
+        date: this.date
       }
       // console.log(addTodo)
 
@@ -132,7 +134,7 @@ export default {
             icon: 'success'
           })
           this.todo = ''
-          this.date=''
+          this.date = ''
         })
         .catch(err => {
           swal({
@@ -213,13 +215,7 @@ export default {
 }
 </script>
 
-<style>
-#bah{
-  /* border: 2px solid white; */
-}
 
-
-</style>
 
 
 

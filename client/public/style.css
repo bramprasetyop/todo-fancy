@@ -1,5 +1,6 @@
 body {
   background-color: rgb(5, 68, 77);
+  /* background: linear-gradient(rgb(2, 71, 62), rgb(128, 221, 228)) */
   /* background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(https://cdn-images-1.medium.com/max/2000/1*o-9xgkkyBgkhnBVN_Wxs6Q.png);
   opacity: 0.8; */
 }
@@ -94,7 +95,7 @@ a {
   border-radius: 5px;
   border: 1px solid rgb(253, 252, 252);
   padding: 50px 50px;
-  margin-top: 18vh;
+  margin-top: 0;
   -webkit-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
   box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
@@ -115,16 +116,8 @@ a {
   /* border: 1px solid white; */
 }
 
-.loginform {
-  background-color: azure;
-  color: rgb(241, 45, 78);
-  border-radius: 5px;
-  border: 1px solid rgb(253, 252, 252);
-  padding: 50px 50px;
-  margin-top: 18vh;
-  -webkit-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
-  box-shadow: 11px 12px 23px -9px rgba(0, 0, 0, 0.75);
+#bah{
+  margin-left: 40px;
 }
 
 #inidah {
