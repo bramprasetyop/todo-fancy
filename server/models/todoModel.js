@@ -7,7 +7,7 @@ let todoSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "customers"
   },
-  date: { type: String},
+  date: { type: Date},
   content: String
 }, {
   timestamps: true

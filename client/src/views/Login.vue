@@ -72,7 +72,7 @@ export default {
         password: this.password
       }
       axios
-        .post('http://localhost:3000/signin', account)
+        .post('https://api-todo.bramaprasetyo.co/signin', account)
         .then(response => {
           // console.log(response.data.customers.userName.split(/[0-9]/).join(''));
 
@@ -117,7 +117,7 @@ export default {
           }
 
           axios
-            .post('http://localhost:3000/loginWithFb', account)
+            .post('https://api-todo.bramaprasetyo.co/loginWithFb', account)
             .then(response => {
               // console.log(response.data.token);
               // this.$router.push('/login')

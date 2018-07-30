@@ -90,7 +90,7 @@ export default {
       }
 
       axios
-        .post('http://localhost:3000/signup', account)
+        .post('https://api-todo.bramaprasetyo.co/signup', account)
         .then(response => {
           // console.log(response.data.token);
           this.$router.push('/login')

@@ -1,5 +1,6 @@
 <template>
   <div v-if="!isdeleted" class="row">
+    
     <div class="col s8 ">
       <div id="lah" v-if="!editmode">
         <div class="row">
@@ -12,6 +13,8 @@
         </div>
 
       </div>
+
+
       <div v-else class="col s12 m6 l6">
         <div class="row">
           <div class="col s6">
@@ -23,7 +26,7 @@
         </div>
 
         <div class="row">
-          <a href>
+          <a >
             <div class="col s4 m3 l3">
               <button id="inidah" @click="editTodo(item)" class="btn-floating btn-small waves-effect magenta waves-light">
                 <i class="small material-icons">save</i>
@@ -39,6 +42,7 @@
       </div>
 
     </div>
+
     <div v-if="!editmode" class="col s4">
       <td>
         <button id="inidah" @click="deleteTodo(item._id)" class="btn-floating btn-small waves-effect magenta waves-light">
@@ -114,7 +118,7 @@ export default {
             icon: 'success'
           })
           axios
-            .delete(`http://localhost:3000/content/delete/${id}`, {
+            .delete(`https://api-todo.bramaprasetyo.co/content/delete/${id}`, {
               headers: {
                 authorization: token
               }
@@ -137,7 +141,7 @@ export default {
       }
 
       axios
-        .put(`http://localhost:3000/content/edit/${item._id}`, body, {
+        .put(`https://api-todo.bramaprasetyo.co/content/edit/${item._id}`, body, {
           headers: {
             authorization: token
           }

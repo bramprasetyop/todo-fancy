@@ -47,11 +47,11 @@
               </div>
 
               <div id="iyaiyaa" class="col s4 m3 l3">
-
-                <button id="inidah" type="button" class="btn btn-danger btn-block">
-                  <router-link to="/login">Login</router-link>
-
-                </button>
+                <router-link to="/login">
+                  <button id="inidah" type="button" class="btn btn-danger btn-block">
+                    Login
+                  </button>
+                </router-link>
 
               </div>
             </div>
@@ -99,7 +99,7 @@ export default {
       }
 
       axios
-        .post('http://localhost:3000/signup', account)
+        .post('https://api-todo.bramaprasetyo.co/signup', account)
         .then(response => {
           // console.log(response.data.token);
           this.$router.push('/login')
