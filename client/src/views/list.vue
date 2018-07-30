@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isdeleted" class="row">
-    
+
     <div class="col s8 ">
       <div id="lah" v-if="!editmode">
         <div class="row">
@@ -14,19 +14,18 @@
 
       </div>
 
-
       <div v-else class="col s12 m6 l6">
         <div class="row">
           <div class="col s6">
             <input id="yadah" v-model="updatetodo">
           </div>
           <div class="col s6">
-            <DatePicker v-model="date" type="date" format="DD-MM-YYYY" lang="en" :not-before="new Date()"></DatePicker>
+            <DatePicker v-model="currentDate" type="date" format="DD-MM-YYYY" lang="en" :not-before="new Date()"></DatePicker>
           </div>
         </div>
 
         <div class="row">
-          <a >
+          <a>
             <div class="col s4 m3 l3">
               <button id="inidah" @click="editTodo(item)" class="btn-floating btn-small waves-effect magenta waves-light">
                 <i class="small material-icons">save</i>
@@ -63,6 +62,7 @@
 <script>
 import axios from 'axios'
 import DatePicker from 'vue2-datepicker'
+import Moment from 'moment'
 
 export default {
   components: {
@@ -74,34 +74,35 @@ export default {
       isdeleted: false,
       updatetodo: this.item.content,
       lalala: this.item.content,
-      currentDate: '',
+      currentDate: Moment(this.item.deadline).format('MMM Do YY'),
       date: ''
     }
   },
   props: ['item'],
   created() {
-    this.getDate()
-    if (localStorage.hasOwnProperty('token') === true) {
-      this.$router.push('/home')
-      // this.getdata()
-      this.deleteTodo(id)
-      this.editTodo(id)
-    }
-    this.$router.push('/')
+    // this.getDate()
+    // if (localStorage.hasOwnProperty('token') === true) {
+    //   this.$router.push('/home')
+    //   // this.getdata()
+    //   this.deleteTodo()
+    //   this.editTodo()
+    // }
+    // this.$router.push('/')
   },
   methods: {
-    getDate() {
-      var d = new Date(this.item.date)
-      // console.log(d);
+    // getDate() {
+    //     this.currentDate = Moment(this.item.deadline).format('MMM Do YY')
+    // var d = new Date(this.item.deadline)
+    // console.log('=============', d)
 
-      var day = d.getDate()
-      // console.log(day);
-      var month = d.getMonth() + 1
-      var year = d.getFullYear()
-      var fullYear = `${day}/ ${month}/ ${year}`
-      this.currentDate = fullYear
-      // console.log(this.currentDate);
-    },
+    // var day = d.getDate()
+    // // console.log(day);
+    // var month = d.getMonth() + 1
+    // var year = d.getFullYear()
+    // var fullYear = `${day}/ ${month}/ ${year}`
+    // this.currentDate = fullYear
+    // // console.log(this.currentDate);
+    // },
     toggleedit() {
       this.editmode = !this.editmode
     },
@@ -137,18 +138,26 @@ export default {
       let token = localStorage.getItem('token')
       const body = {
         content: this.updatetodo,
-        date: this.date
+        deadline: this.currentDate
       }
+      console.log(this.currentDate)
 
       axios
-        .put(`https://api-todo.bramaprasetyo.co/content/edit/${item._id}`, body, {
-          headers: {
-            authorization: token
+        .put(
+          `https://api-todo.bramaprasetyo.co/content/edit/${item._id}`,
+          body,
+          {
+            headers: {
+              authorization: token
+            }
           }
-        })
+        )
         .then(response => {
-          this.$router.push('/home')
+          console.log(response)
+          // this.$router.push('/home')
           this.editmode = false
+          // this.getDate()
+          // this.getdata()
         })
     }
   }

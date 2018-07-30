@@ -17,7 +17,7 @@
               <!-- ============= tambahan weather disini ========== -->
               <div id="bah" class="col s8 right">
                 <h6 id="timing">{{weatherAgain.main.temp}} &#8451;</h6>
-                <img v-bind:src="'http://openweathermap.org/img/w/' + weatherAgain.weather[0].icon + '.png'">
+                <img v-bind:src="'https://openweathermap.org/img/w/' + weatherAgain.weather[0].icon + '.png'">
                 <h6 id="timing"> Zone : {{weather.zone}}</h6>
                 <h6 id="timing"> Local Time : {{weather.localtime}}</h6>
 
@@ -115,7 +115,7 @@ export default {
     postTodo() {
       let addTodo = {
         content: this.todo,
-        date: this.date
+        deadline: this.date
       }
       // console.log(addTodo)
 
@@ -182,7 +182,7 @@ export default {
     getWeather() {
       axios
         .get(
-          'http://api.worldweatheronline.com/premium/v1/tz.ashx?key=407b727e36594b6286834502181007&q=jakarta&format=json'
+          'https://api.worldweatheronline.com/premium/v1/tz.ashx?key=407b727e36594b6286834502181007&q=jakarta&format=json'
         )
         .then(response => {
           // console.log(response.data.dataTodos);
@@ -197,7 +197,7 @@ export default {
     getWeatherAgain() {
       axios
         .get(
-          'http://api.openweathermap.org/data/2.5/forecast?id=1642907&units=metric&APPID=6671e05679c0882dab719d2d8b238ea6'
+          'https://api.openweathermap.org/data/2.5/forecast?id=1642907&units=metric&APPID=6671e05679c0882dab719d2d8b238ea6'
         )
         .then(response => {
           // console.log(response.data.list[0].weather[0].icon)
