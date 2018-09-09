@@ -82,17 +82,13 @@ function editTodo(req, res) {
 
 
 function getOnetodo(req, res) {
-  // console.log('--------------------------masuk nih');
+  
   console.log(req.headers);
   
-  // console.log(process.env.JWT_SALT);
   
   var decoded = jwt.verify(req.headers.token,process.env.SECRET)
 
-  // console.log('xxxxxxxxxxxxxxxxxxxxxxxx',decoded);
-  
-  // console.log(decoded);
-  // console.log('===================',req.headers.token);
+ 
   
   
 

@@ -18,8 +18,8 @@
               <div id="bah" class="col s8 right">
                 <h6 id="timing">{{weatherAgain.main.temp}} &#8451;</h6>
                 <img v-bind:src="'https://openweathermap.org/img/w/' + weatherAgain.weather[0].icon + '.png'">
-                <h6 id="timing"> Zone : {{weather.zone}}</h6>
-                <h6 id="timing"> Local Time : {{weather.localtime}}</h6>
+                <h6 id="timing"> {{city}}</h6>
+               
 
                 <!-- ============= tambahan weather disini ========== -->
 
@@ -97,7 +97,8 @@ export default {
       weatherAgain: '',
       customers: '',
       date: '',
-      currentDate: ''
+      currentDate: '',
+      city:''
     }
   },
   created: function() {
@@ -200,9 +201,9 @@ export default {
           'https://api.openweathermap.org/data/2.5/forecast?id=1642907&units=metric&APPID=6671e05679c0882dab719d2d8b238ea6'
         )
         .then(response => {
-          // console.log(response.data.list[0].weather[0].icon)
-          // console.log(response.data.data.time_zone[0].zone);
-
+          console.log(response);
+          
+          this.city = response.data.city.name
           this.weatherAgain = response.data.list[0]
         })
         .catch(err => {
